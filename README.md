@@ -22,7 +22,7 @@ rustup target add aarch64-apple-ios armv7-apple-ios armv7s-apple-ios x86_64-appl
 cargo install cargo-lipo
 cargo install cbindgen
 cargo lipo --release
-cbindgen ./src/lib.rs -c cbindgen.toml | grep -v \#include | uniq
+cbindgen --config cbindgen.toml --crate violet --output my_header.h
 ```
 
 ## Why is libviolet written by rust?
