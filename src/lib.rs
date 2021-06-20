@@ -162,7 +162,7 @@ async fn download(url: String, fullpath: String, header: HashMap<String, serde_j
   while let Some(item) = stream.next().await {
     let bytes = item?;
     DOWNLOADED_BYTES.fetch_add(bytes.len(), Ordering::SeqCst);
-    task.write(bytes.as_ref()).await.unwrap();
+    task.write_all(&bytes).await.unwrap();
   }
 
   Ok(0)
